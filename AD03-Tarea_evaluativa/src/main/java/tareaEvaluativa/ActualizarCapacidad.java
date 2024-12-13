@@ -56,6 +56,7 @@ public class ActualizarCapacidad {
                 System.out.print("Introduce la nueva capacidad máxima: ");
                 int nuevaCapacidad = scanner.nextInt();
 
+                //Actualizacion de capacidad
                 String updateQuery = "UPDATE ubicaciones SET capacidad = ? WHERE nombre = ?";
                 PreparedStatement updateStatement = c.prepareStatement(updateQuery);
                 updateStatement.setInt(1, nuevaCapacidad);

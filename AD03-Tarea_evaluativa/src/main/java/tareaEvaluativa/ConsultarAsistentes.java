@@ -27,12 +27,14 @@ public class ConsultarAsistentes {
         Scanner scanner = new Scanner(System.in);
 
         try {
+        	//conexion base de datos
             c = DriverManager.getConnection(urlConnection, user, pwd);
 
             String eventosQuery = "SELECT e.id_evento, e.nombre_evento FROM eventos e";
             PreparedStatement statementEventos = c.prepareStatement(eventosQuery);
             ResultSet rsEventos = statementEventos.executeQuery();
 
+            //Listado de eventos
             System.out.println("Listado de eventos:");
             while (rsEventos.next()) {
                 int idEvento = rsEventos.getInt("id_evento");
@@ -40,6 +42,7 @@ public class ConsultarAsistentes {
                 System.out.println(idEvento + ". " + nombreEvento);
             }
 
+            //Consulta evento para ver asistentes
             System.out.print("Ingrese el número del evento para consultar la cantidad de asistentes: ");
             int eventoSeleccionado = scanner.nextInt();
             scanner.nextLine(); 
